@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.pawelprzystarz.testproject.Controllers.LoginController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Logowanie">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="textLogin" layoutX="130.0" layoutY="127.0" prefHeight="25.0" prefWidth="321.0" promptText="Login" />
+                        <PasswordField fx:id="textPassword" layoutX="130.0" layoutY="186.0" prefHeight="25.0" prefWidth="321.0" promptText="Password" />
+                        <Button fx:id="buttonLogin" layoutX="395.0" layoutY="235.0" mnemonicParsing="false" text="Zaloguj" />
+                        <Label layoutX="235.0" layoutY="72.0" text="Logowanie">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Rejestracja">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="textLoginR" layoutX="162.0" layoutY="88.0" prefHeight="25.0" prefWidth="252.0" promptText="Login" />
+                        <PasswordField fx:id="textPasswordR" layoutX="162.0" layoutY="129.0" prefHeight="25.0" prefWidth="250.0" promptText="Hasło" />
+                        <PasswordField fx:id="textPasswordRR" layoutX="163.0" layoutY="173.0" prefHeight="25.0" prefWidth="249.0" promptText="Powtórz hasło" />
+                        <Button fx:id="buttonRegister" layoutX="344.0" layoutY="235.0" mnemonicParsing="false" text="Zarejestruj" />
+                        <Label layoutX="230.0" layoutY="30.0" text="Rejestracja">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
