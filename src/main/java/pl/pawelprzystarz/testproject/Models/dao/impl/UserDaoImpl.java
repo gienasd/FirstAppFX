@@ -1,6 +1,7 @@
 package pl.pawelprzystarz.testproject.Models.dao.impl;
 
 import pl.pawelprzystarz.testproject.Models.MySqlConnector;
+import pl.pawelprzystarz.testproject.Models.Utils;
 import pl.pawelprzystarz.testproject.Models.dao.UserDao;
 
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class UserDaoImpl implements UserDao {
                 return false;                // Przesuwa wskaźnik z -1 na 1;
             }
 
-            return resultSet.getString("password").equals(password);
+            return resultSet.getString("password").equals(Utils.shaHash(password));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +54,7 @@ public class UserDaoImpl implements UserDao {
 
             preparedStatement1.setInt(1, 0);
             preparedStatement1.setString(2, name);
-            preparedStatement1.setString(3, password);
+            preparedStatement1.setString(3, Utils.shaHash(password));
 
             preparedStatement1.execute();
 

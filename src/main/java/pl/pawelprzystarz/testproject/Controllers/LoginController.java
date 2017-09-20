@@ -1,15 +1,20 @@
 package pl.pawelprzystarz.testproject.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import pl.pawelprzystarz.testproject.Models.UserSession;
 import pl.pawelprzystarz.testproject.Models.Utils;
 import pl.pawelprzystarz.testproject.Models.dao.UserDao;
 import pl.pawelprzystarz.testproject.Models.dao.impl.UserDaoImpl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +37,6 @@ public class LoginController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         buttonLogin.setOnMouseClicked(e -> tryLogin());
         buttonRegister.setOnMouseClicked(e -> tryRegister());
-
     }
 
     private boolean checkRegisterData(){
@@ -57,7 +61,6 @@ public class LoginController implements Initializable{
         return true;
     }
 
-
     private void tryRegister() {
         String login = textLoginR.getText();
         String password = textPasswordR.getText();
@@ -69,7 +72,7 @@ public class LoginController implements Initializable{
         if(userDao.register(login, password)){
             Utils.createSimpleDialog("Rejestrowanie...", "", "Udało się zarejestrować!");
         }else{
-            Utils.createSimpleDialog("Rejestrowanie...", "", "Błędne dane!");
+            Utils.createSimpleDialog("Rejestrowanie...", "", "Ten login jest już zajęty!");
         }
     }
 
@@ -103,7 +106,14 @@ public class LoginController implements Initializable{
             userSession.setUsername(login);
             userSession.setLogedIn(true);
 
-            Utils.createSimpleDialog("Logowanie...", "", "Udało się zalogować!");
+            try {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
+                Stage stageRoot = (Stage) buttonLogin.getScene().getWindow();
+                stageRoot.setScene(new Scene(root, 600, 400));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }else{
             Utils.createSimpleDialog("Logowanie...", "", "Masz błąd w danych!");
         }
